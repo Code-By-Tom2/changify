@@ -1,0 +1,97 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model NGO {
+  id                String    @id @default(cuid())
+  organizationName  String
+  email            String    @unique
+  password         String
+  phone            String?
+  whatsapp         String?
+  location         String?
+  website          String?
+  logo             String?
+  donationNeeded   Float?
+  purpose          String?
+  impact           String?
+  isVerified       Boolean   @default(false)
+  verificationStatus String   @default("PENDING")
+  role             String    @default("ngo")
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  campaigns        Campaign[]
+}
+
+model Donor {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  role          String    @default("donor")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  donations     Donation[]
+}
+
+model Campaign {
+  id            String    @id @default(cuid())
+  title         String
+  targetAmount  Float
+  currentAmount Float     @default(0)
+  description   String
+  deadline      DateTime
+  city          String
+  upiId         String
+  status        String    @default("active")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  ngo           NGO       @relation(fields: [ngoId], references: [id])
+  ngoId         String
+  updates       Update[]
+  donations     Donation[]
+}
+
+model Update {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  campaign    Campaign  @relation(fields: [campaignId], references: [id])
+  campaignId  String
+}
+
+model Donation {
+  id            String    @id @default(cuid())
+  amount        Float
+  status        String    @default("PENDING")
+  donor         Donor     @relation(fields: [donorId], references: [id])
+  donorId       String
+  campaign      Campaign  @relation(fields: [campaignId], references: [id])
+  campaignId    String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+enum Role {
+  DONOR
+  NGO
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
