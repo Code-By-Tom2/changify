@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Changify
+========
 
-## Getting Started
+Changify is a web application built with Next.js, TypeScript, and Tailwind CSS, designed to support NGOs and charitable organizations in managing campaigns and facilitating public donations. The platform provides a user-friendly interface for creating, showcasing, and managing fundraising campaigns, enabling donors to contribute seamlessly and securely.
 
-First, run the development server:
+Features
+--------
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   **User Authentication**: Secure user login and registration system.
+    
+*   **Profile Management**: Users can view and update their profile information.
+    
+*   **Change Verification**: Implements a verification process for sensitive data changes.
+    
+*   **Responsive Design**: Optimized for various devices using Tailwind CSS.
+    
+*   **Modern Stack**: Built with Next.js, TypeScript, Prisma, and Tailwind CSS.
+    
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Technologies Used
+-----------------
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+*   [Next.js](https://nextjs.org/): React framework for server-rendered applications.
+    
+*   [TypeScript](https://www.typescriptlang.org/): Typed superset of JavaScript.
+    
+*   [Tailwind CSS](https://tailwindcss.com/): Utility-first CSS framework.
+    
+*   [Prisma](https://www.prisma.io/): Next-generation ORM for Node.js and TypeScript.
+    
+*   [React Hooks](https://reactjs.org/docs/hooks-intro.html): For managing component state and side effects.
+    
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Getting Started
+---------------
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+*   Node.js (v14 or later)
+    
+*   npm or yarn
+    
+*   PostgreSQL (or any other supported database)
+    
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  git clone https://github.com/Code-By-Tom2/changify.git
+    
+2.  Using npm:npm installOr using yarn:yarn install
+    
+3.  Create a .env file in the root directory and add the following:DATABASE\_URL=your\_database\_connection\_stringNEXTAUTH\_SECRET=your\_nextauth\_secret
+    
+4.  npx prisma migrate dev --name init
+    
+5.  Using npm:npm run devOr using yarn:yarn devThe application will be available at [http://localhost:3000](http://localhost:3000/).
+    
 
-## Deploy on Vercel
+Project Structure
+-----------------
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*   app/: Contains the main application components and pages.
+    
+*   components/: Reusable UI components.
+    
+*   data/: Static data and constants.
+    
+*   hooks/: Custom React hooks.
+    
+*   lib/: Utility functions and helpers.
+    
+*   prisma/: Prisma schema and database migrations.
+    
+*   public/: Static assets like images and fonts.
+    
+*   styles/: Global styles and Tailwind CSS configurations.
+    
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Scripts
+-------
+
+*   dev: Runs the development server.
+    
+*   build: Builds the application for production.
+    
+*   start: Starts the production server.
+    
+*   lint: Runs ESLint for code linting.
+    
+
+Contributing
+------------
+
+Contributions are welcome! Please follow these steps:
+
+1.  Fork the repository.
+    
+2.  Create a new branch: git checkout -b feature/your-feature-name.
+    
+3.  Make your changes and commit them: git commit -m 'Add your feature'.
+    
+4.  Push to the branch: git push origin feature/your-feature-name.
+    
+5.  Open a pull request.
+    
+
+License
+-------
+
+This project is licensed under the MIT License.
+
+Feel free to customize this README.md further to match any additional features or configurations specific to your project.
